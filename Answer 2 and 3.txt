@@ -1,0 +1,10 @@
+Soal 2
+1. Di dalam web untuk lokasi bisa dibuat dropdown searchable, sehingga Ketika user mengetik bisa mendapatkan feedback list kota yang tersedia ada apa saja. kemudia bagian cabang olahraga bisa dibuat scrollbar sehingga tidak terlalu Panjang. lalu ada keranjang, mungkin sebaiknya di hide dalam keadaan Ketika user belum login atau sebagai Guest
+2. untuk versi aplikasi, beberapa nama team, lapangan belum ada standarisasi terkadang masih ada yang lowercase semua, ada yang model snakecase. untuk flow yang lain masih perlu explore lebih lagi
+
+Soal 3
+1. Saya memiliki pengalaman dalam development golang kurang lebih 3 tahun, dengan menggunakan framework gin maupun fiber. selain itu saya sangat tertarik untuk mengexplore lebih dalam tentang golang maupun Bahasa baru dan mendapatkan insight baru. kemudian di perusahaan sebelumnya juga menggunakan golang untuk bidang supply chain management, dan cukup memberikan masukan Ketika lead mengajak diskusi terkait sebuah fitur baru, yang dimana secara flow kurang lebih sama, hanya berbeda dalam bentuk yang di perjual belikan dan juga ada transaksionalnya
+2. suka tantangan, mau menerima masukan, kreatif
+3. dalam penggunaan golang saya sempat tergabung dalam supply chain management, sales tracking, budgeting, live stock management, dll. kemudian di beberapa project juga tergabung dalam development LLM yang dimana mungkin bisa ditambahkan sebagai fitur di mobile apps
+4. motivasi saya melamar posisi BE golang karena saya ingin explore lebih dalam, mendapatkan insight baru baik dari ilmu maupun soft skill dalam team maupun individual, dan karena rasa ingin tahu yang besar mungkin bisa membantu untuk develop new feature
+5. explore memahami flow existing dari divisi yang saya masuki, kemudian berdiskusi dengan tim yang ada terkain apa yang sedang berjalan dan apa yang akan dikerjakan, yang dimana saya bisa mencoba untuk memberikan insight yang mungkin saja masih berkaitan dengan business flow atau project yang pernah saya develop
