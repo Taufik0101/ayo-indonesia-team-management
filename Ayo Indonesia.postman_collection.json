@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "1e76dd6e-1a61-4251-b679-c7e35ae03783",
+		"name": "Ayo Indonesia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19199067"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const decodeuri = pm.response.text()\r",
+									"const parseJSON = JSON.parse(decodeuri)\r",
+									"try{\r",
+									"    const access_token = parseJSON.data.access_token\r",
+									"    console.log(access_token)\r",
+									"    console.log(\"PM Before\",pm.collectionVariables.get(\"access_token\"))\r",
+									"    pm.collectionVariables.set(\"access_token\", access_token);\r",
+									"    console.log(\"PM After\",pm.collectionVariables.get(\"access_token\"))\r",
+									"}catch(e){\r",
+									"    console.error(e.message)\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testadmin@gmail.com\",\r\n    \"password\": \"AAaa11!!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/LEGION/Pictures/Screenshot 2024-06-12 214047.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/upload",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Team",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Team C\",\r\n    \"address\": \"Alamat\",\r\n    \"Logo\": \"https://ymkmppshdqucooyflvmm.storage.supabase.co/storage/v1/object/public/uploads/uploads/2025/66755f08-480c-4fad-9789-7e4873c85bf1.png\",\r\n    \"Year\": 2010,\r\n    \"province_id\": \"957a2efb-fa3a-482d-b482-e4901fe69004\",\r\n    \"district_id\": \"280f1804-0cff-4053-8138-879feccfa8e7\",\r\n    \"sub_district_id\": \"3eb0c123-6aea-4c59-8ac3-bb63e8df0b1f\",\r\n    \"village_id\": \"00e057ba-586c-4cf0-bc08-fd59186f299e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/team/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"team",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"a3527c6a-0e5f-4a62-92ef-de2b614111a9\",\r\n    \"name\": \"Team B\",\r\n    \"address\": \"Alamat\",\r\n    \"Logo\": \"https://ymkmppshdqucooyflvmm.storage.supabase.co/storage/v1/object/public/uploads/uploads/2025/66755f08-480c-4fad-9789-7e4873c85bf1.png\",\r\n    \"Year\": 2010,\r\n    \"province_id\": \"957a2efb-fa3a-482d-b482-e4901fe69004\",\r\n    \"district_id\": \"280f1804-0cff-4053-8138-879feccfa8e7\",\r\n    \"sub_district_id\": \"3eb0c123-6aea-4c59-8ac3-bb63e8df0b1f\",\r\n    \"village_id\": \"00e057ba-586c-4cf0-bc08-fd59186f299e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/team/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"team",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/team/delete/a3527c6a-0e5f-4a62-92ef-de2b614111a9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"team",
+								"delete",
+								"a3527c6a-0e5f-4a62-92ef-de2b614111a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Player",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Player B\",\r\n    \"height\": 179,\r\n    \"weight\": 79,\r\n    \"number\": 10,\r\n    \"position\": \"penyerang\",\r\n    \"team_id\": \"12e0b527-5195-4e76-b875-fc08bbb8fc25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/player/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"player",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"b5f44cad-61e9-42d7-aea5-f65f83bb35b3\",\r\n    \"name\": \"Player B\",\r\n    \"height\": 179,\r\n    \"weight\": 79,\r\n    \"number\": 12,\r\n    \"position\": \"penyerang\",\r\n    \"team_id\": \"db1a85d3-3b5f-4a2a-a785-c1c8d96d58d9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/player/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"player",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/player/delete/b5f44cad-61e9-42d7-aea5-f65f83bb35b3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"player",
+								"delete",
+								"b5f44cad-61e9-42d7-aea5-f65f83bb35b3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date_time\": \"2025-10-22 12:04\",\r\n    \"home_team_id\": \"12e0b527-5195-4e76-b875-fc08bbb8fc25\",\r\n    \"away_team_id\": \"b8fb513f-b4c3-4b0f-b28b-f45313f6cf12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/schedule/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"schedule",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"90c2d0c1-9472-43ba-a354-0cb7c0032601\",\r\n    \"date_time\": \"2025-10-19 12:04\",\r\n    \"home_team_id\": \"db1a85d3-3b5f-4a2a-a785-c1c8d96d58d9\",\r\n    \"away_team_id\": \"8390e871-88fa-4a27-9f58-be5e2feedde7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/schedule/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"schedule",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/schedule/delete/d2e57473-418a-4694-8596-d68b1c75a16d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"schedule",
+								"delete",
+								"d2e57473-418a-4694-8596-d68b1c75a16d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/schedule/detail/92e1961b-598c-4602-b008-5335df93ec94",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"schedule",
+								"detail",
+								"92e1961b-598c-4602-b008-5335df93ec94"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Result",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schedule_id\": \"769ac44d-8802-4fb5-9dd5-d47764187c40\",\r\n    \"score_home\": 2,\r\n    \"score_away\": 2,\r\n    \"details\": [\r\n        {\r\n            \"player_id\": \"6979b4a0-4b64-4b73-8949-36b88f34dbd0\",\r\n            \"goal_time\": \"70:35\",\r\n            \"is_penalty\": false\r\n        },\r\n        {\r\n            \"player_id\": \"6979b4a0-4b64-4b73-8949-36b88f34dbd0\",\r\n            \"goal_time\": \"70:35\",\r\n            \"is_penalty\": false\r\n        },\r\n        {\r\n            \"player_id\": \"73508c14-b3ad-4a04-895d-f155b414df66\",\r\n            \"goal_time\": \"70:35\",\r\n            \"is_penalty\": false\r\n        },\r\n        {\r\n            \"player_id\": \"73508c14-b3ad-4a04-895d-f155b414df66\",\r\n            \"goal_time\": \"70:35\",\r\n            \"is_penalty\": false\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/result/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"result",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
